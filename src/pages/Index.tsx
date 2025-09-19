@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
+import PriceCalculator from '@/components/PriceCalculator';
 
 const Index = () => {
   const [selectedMaterial, setSelectedMaterial] = useState<string>('');
@@ -252,22 +253,12 @@ const Index = () => {
             </TabsContent>
           </Tabs>
           
-          {(selectedMaterial || selectedFormat) && (
-            <div className="mt-8 p-6 bg-white rounded-lg shadow-md animate-fade-in">
-              <h4 className="text-xl font-semibold text-dark-grey mb-4">Ваш выбор:</h4>
-              <div className="space-y-2">
-                {selectedMaterial && (
-                  <p className="text-medium-grey"><strong>Материал:</strong> {selectedMaterial}</p>
-                )}
-                {selectedFormat && (
-                  <p className="text-medium-grey"><strong>Формат:</strong> {selectedFormat}</p>
-                )}
-              </div>
-              <Button className="mt-4 bg-vibrant-orange hover:bg-vibrant-orange/90 text-white">
-                Рассчитать стоимость
-              </Button>
-            </div>
-          )}
+          <div className="mt-12">
+            <PriceCalculator 
+              selectedMaterial={selectedMaterial} 
+              selectedFormat={selectedFormat}
+            />
+          </div>
         </div>
       </section>
 
